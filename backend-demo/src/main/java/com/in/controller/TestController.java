@@ -11,6 +11,6 @@ public class TestController {
 	@GetMapping("/msg")
 	public String getMessage() {
 		
-		return "Build running successfull";
+		return "Build running successfully";
 	}
 }
