@@ -9,7 +9,7 @@ function App() {
     try {
       const response = await axios.get('http://localhost:8081/test/msg');
       setMessage(response.data); // axios response
-      alert(message);
+      alert("Recieved response from backend");
     } catch (error) {
       console.error('Error fetching message:', error);
       alert('Build failed');
