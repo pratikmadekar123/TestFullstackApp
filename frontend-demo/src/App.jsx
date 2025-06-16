@@ -1,22 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import axios from 'axios';
 
 function App() {
- 
-  const handleButton=()=>{
+  const [message, setMessage] = useState('');
 
-    alert("Build run Successfully");
-  }
+  const handleButton = async () => {
+    try {
+      const response = await axios.get('http://localhost:8081/test/msg');
+      setMessage(response.data); // axios response
+      alert(message);
+    } catch (error) {
+      console.error('Error fetching message:', error);
+      alert('Build failed');
+    }
+  };
 
   return (
     <>
-      <button onClick={handleButton} 
-      style={{border:"1px solid blue", color:"blue"}}
-      >Click Here</button>
+      <button
+        onClick={handleButton}
+        style={{ border: '1px solid blue', color: 'blue' }}
+      >
+        Click Here
+      </button>
+      <p>{message}</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
